@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Pluto Facts</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #ff6b6b, #f7b733);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .fact-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #fact-display {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff6b6b;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff4c4c;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="fact-container">
+        <p id="fact-display">Click the button to see a random fact about Pluto!</p>
+        <button id="fact-button">Show Random Fact</button>
+    </div>
+    <script>
+        const pluto_facts = [
+            {"fact": "Pluto was discovered in 1930 by Clyde Tombaugh."},
+            {"fact": "Pluto is classified as a dwarf planet."},
+            {"fact": "Pluto has five known moons, the largest of which is Charon."},
+            {"fact": "Pluto's orbit is highly elliptical and tilted."},
+            {"fact": "Pluto is primarily composed of ice and rock."},
+            {"fact": "Pluto has a thin atmosphere composed mainly of nitrogen."},
+            {"fact": "Pluto's surface temperature can drop to -375 degrees Fahrenheit (-225 degrees Celsius)."},
+            {"fact": "Pluto was reclassified from a planet to a dwarf planet in 2006."},
+            {"fact": "Pluto takes about 248 Earth years to complete one orbit around the Sun."},
+            {"fact": "Pluto is located in the Kuiper Belt, a region of the solar system beyond Neptune."}
+        ];
+
+        document.getElementById('fact-button').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * pluto_facts.length);
+            const factDisplay = document.getElementById('fact-display');
+            factDisplay.style.opacity = 0; // Fade out
+            setTimeout(() => {
+                factDisplay.textContent = pluto_facts[randomIndex].fact;
+                factDisplay.style.opacity = 1; // Fade in
+            }, 500);
+        });
+    </script>
+</body>
+</html>
